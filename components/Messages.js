@@ -1,25 +1,47 @@
-import { ByMoralis } from "react-moralis";
+import { useRef } from "react";
+import { ByMoralis, useMoralis, useMoralisQuery } from "react-moralis";
+import Message from "./Message";
+import SendMessage from "./SendMessage";
 
-coonst { user } =useMoralis();
+const MIN_DURATION = 15;
+
+const { user } = useMoralis();
+const endOfMessageRef = useRef(null);
+const { data, loading, error } = useMoralisQuery(
+  "Messages",
+  (query) =>
+    query
+      .addAscending(createdAt)
+      .greaterThanOrEqualTo(
+        "createdAt",
+        new Date(Date.now() - MIN_DURATION * 60 * 1000)
+      ),
+  [],
+  { live: true }
+);
 
 function Messages() {
   return (
-    <div className="pp-56">
+    <div className="pb-56">
       <div className="my-5">
-        {" "}
         I
-        <ByMoralis style={{ marginLeft: "auto", marginRight: "auto" }} />
+        <ByMoralis
+          variant="dark"
+          style={{ marginLeft: "auto", marginRight: "auto" }}
+        />
       </div>
 
-      <div> </div>
-      <div>
-          <SendMessage />
+      <div className="space-y-10 p-4">
+        {data.map((message) => (
+          <Message key={message.id} message={message} />
+        ))}
       </div>
-      <div className="p">
-          <p> You are upto date </p>
-
+      <div className="flex justify-center">
+        <SendMessage endOfMessageRef={endOfMessageRef} />
       </div>
-      <h1> I am vegan message </h1>
+      <div ref={endOfMessageRef} className="text-center text-gray-400 mt-5">
+        <p> You are upto date {user.getUsername()} ! </p>
+      </div>
     </div>
   );
 }

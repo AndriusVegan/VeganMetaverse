@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { useMoralis } from "react-moralis";
 
-function Avatar({ use, logout }) {
+function Avatar({ username, logoutOnPress }) {
+  const { user, logout } = useMoralis();
   return (
     <Image
       className="rounded-full bg-black cursor-pointer"
       src={`https://avatar.dicebears.com/api/pixel-art${
-        username // user..get('user)
+        username || user.get("username")
       }.svg`}
       onClick={() => logoutOnPress && logout()}
       layout="fill"
