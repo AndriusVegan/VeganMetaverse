@@ -1,4 +1,4 @@
-import (useMoralis) from 'react-moralis';
+import { useMoralis } from 'react-moralis';
 
 function ChangeUserName() {
 
@@ -22,7 +22,7 @@ function ChangeUserName() {
         
         >Change your Username</button>
             
-        </div>>
+        </div>
     )
 }
 

@@ -1,8 +1,8 @@
 import Image from "next/image";
-Import {useMoralis} from 'react-moralis';
+import { useMoralis } from "react-moralis";
 
 function Login() {
-
+  const { authenticate } = useMoralis();
   const { isAuthenticated } = useMoralis();
   return (
     <div className="bg-black relative text-white">
@@ -15,10 +15,11 @@ function Login() {
           height={200}
           width={200}
         />
-        <button 
-        onClick={authenticate}
-        className="bg-yellow-500 rounded-lg p-5 font-bold animate-pulse">
-          Login to the metaverse
+        <button
+          onClick={authenticate}
+          className="bg-yellow-500 rounded-lg p-5 font-bold animate-pulse"
+        >
+          Login to the Vegan Metaverse
         </button>
       </div>
       <div className="w-full h-screen">

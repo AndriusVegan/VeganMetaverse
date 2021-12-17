@@ -5,22 +5,22 @@ import SendMessage from "./SendMessage";
 
 const MIN_DURATION = 15;
 
-const { user } = useMoralis();
-const endOfMessageRef = useRef(null);
-const { data, loading, error } = useMoralisQuery(
-  "Messages",
-  (query) =>
-    query
-      .addAscending(createdAt)
-      .greaterThanOrEqualTo(
-        "createdAt",
-        new Date(Date.now() - MIN_DURATION * 60 * 1000)
-      ),
-  [],
-  { live: true }
-);
-
 function Messages() {
+  const { user } = useMoralis();
+  const endOfMessageRef = useRef(null);
+  const { data, loading, error } = useMoralisQuery(
+    "Messages",
+    (query) =>
+      query
+        .addAscending("createdAt")
+        .greaterThanOrEqualTo(
+          "createdAt",
+          new Date(Date.now() - MIN_DURATION * 60 * 1000)
+        ),
+    [],
+    { live: true }
+  );
+
   return (
     <div className="pb-56">
       <div className="my-5">

@@ -3,7 +3,7 @@ import TimeAgo from "timeago-react";
 import Avatar from "./Avatar";
 
 function Message({ message }) {
-  const { useMoralis } = useMoralis();
+  const { user } = useMoralis();
 
   const isUserMessage = message.get("ethAddress") === user.get("ethAddress");
 
@@ -20,9 +20,6 @@ function Message({ message }) {
         className={`flex space-x-4 p-3 rounded-lg
       `}
       >
-        <div className="relative space-x-4">
-          <Avatar />
-        </div>
         <div
           className={`flex space-x-4 p-3 rounded-lg ${
             isUserMessage

@@ -1,15 +1,12 @@
+import { data } from "autoprefixer";
 import { useState } from "react";
-import { useMoralis, ByMoralis, useMoralisQuery } from "react-moralis";
-import SendMessage from " ./SendMessage";
+import { useMoralis } from "react-moralis";
 import Message from "./Message";
 
 const MIN_DURATION = 15;
 
 function SendMessage({ endOfMessageRef }) {
   const { user, Moralis } = useMoralis();
-  const endOfMessageRef = useRef(null);
-  const { data, loading, error } = useMoralisQuery;
-
   const [message, setMessage] = useState("");
 
   const sendMessage = (e) => {
@@ -38,7 +35,7 @@ function SendMessage({ endOfMessageRef }) {
   };
 
   return (
-    <form className="flex w-11/12 fixed bottom-10  bg-black opacity-80 px-6 py-4 max-w-2xl shadow-xl  rounded-full border-4 border-blue-400 ">
+    <form className="flex w-11/12 fixed bottom-10  outline-none bg-black opacity-80 px-6 py-4 max-w-2xl shadow-xl  rounded-full border-4 border-blue-400 ">
       <input
         className="flex-grow bg-transparent outline-none  text-white border-4 placeholder-gray-500 pr-5"
         value={message}
@@ -51,15 +48,14 @@ function SendMessage({ endOfMessageRef }) {
         onClick={sendMessage}
         className="font-bold text-pink-500"
       >
-        {" "}
         Send
       </button>
 
-      <div>
+      {/* <div>
         {data.map((message) => {
           <Message key={message.id} message={message} />;
         })}
-      </div>
+      </div> */}
     </form>
   );
 }
