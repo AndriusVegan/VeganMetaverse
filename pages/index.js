@@ -20,7 +20,7 @@ export default function Home() {
         <Messages />
       </div>
 
-      <h1> Welcome to Vegan Metaverse</h1>
+      {/* <h1> Welcome to Vegan Metaverse</h1> */}
 
       {/* <button onClick={logout}> Logout</button> */}
     </div>
