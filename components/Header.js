@@ -2,6 +2,7 @@ import { useMoralis } from "react-moralis";
 import Image from "next/image";
 import Avatar from "./Avatar";
 import ChangeUserName from "./ChangeUserName";
+// import veganLogo from "../assets/vegan-logo.png";
 
 function Header() {
   const { user } = useMoralis();
@@ -13,7 +14,9 @@ function Header() {
           <Image
             layout="fill"
             className="rounded-full object-cover"
-            src="https://links.papareact.com/3pi"
+            // src="https://links.papareact.com/3pi"
+            // src="https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-vegan-healthy-food-and-vegan-justicon-flat-justicon.png"
+            src="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-vegan-plant-based-diet-soft-fill-soft-fill-juicy-fish-12.png"
           />
         </div>
 
